@@ -1,0 +1,66 @@
+-   Table: DBO.MSC_DATA
+    Columns:
+    -   name: BOUNCE_VALUES
+        type: float
+        sample_values:
+        - '0'
+        - '9.75102'
+    -   name: DATE
+        type: datetime
+        sample_values:
+        - Apr  1 2024 12:00AM
+        - Sep 30 2025 12:00AM
+    -   name: DEVICE_CATEGORY
+        type: varchar
+        sample_values:
+        - Mobile
+        - Desktop
+        - Tablet
+        - Smart TV
+    -   name: MONTH
+        type: datetime
+        sample_values:
+        - Apr 30 2024 12:00AM
+        - Sep 30 2025 12:00AM
+    -   name: SEGMENT
+        type: varchar
+        sample_values:
+        - All Users
+        - 'BF1: Saw Search Results'
+        - 'BF2: Pricing'
+        - 'BF3: Cabin'
+        - 'BF5: Passenger Data'
+    -   name: SESSION_CAMPAIGN
+        type: varchar
+        sample_values:
+        - (referral)
+        - usa-en-conversion
+        - (organic)
+        - (not set)
+        - usa_emr_c1_042023
+    -   name: SESSION_MSC_USA_CUSTOM_CHANNEL_GROUPINGS
+        type: varchar
+        sample_values:
+        - Email
+        - Paid Search
+        - Referral
+        - Affiliate
+        - SMS
+    -   name: SESSION_SOURCE
+        type: varchar
+        sample_values:
+        - google / cpc
+        - acquisition / email
+        - (unlinked sa360 account) / (unlinked sa360 account)
+        - post_booking / email
+        - attentive / sms
+    -   name: SESSIONS_BLENDED
+        type: float
+        sample_values:
+        - '0.121419'
+        - '92.8724'
+    -   name: YEAR
+        type: int
+        sample_values:
+        - '2024'
+        - '2025'

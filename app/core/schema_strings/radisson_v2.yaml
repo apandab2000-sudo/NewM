@@ -1,0 +1,123 @@
+-   Table: DBO.RAD_FUNNEL_DATA
+    Columns:
+    -   name: BOOKINGS
+        type: bigint
+        sample_values:
+        - '0'
+        - '99'
+    -   name: CHECKOUTS
+        type: bigint
+        sample_values:
+        - '0'
+        - '98'
+    -   name: CUSTOMER_TYPE
+        type: varchar
+        sample_values:
+        - Member
+        - Non-Member
+    -   name: DATE
+        type: date
+        sample_values:
+        - Dec  1 2025
+        - Oct 31 2025
+    -   name: HOTEL_CITY
+        type: varchar
+        sample_values:
+        - Dubai
+        - New York
+        - Madrid
+        - London
+        - St. Petersburg
+    -   name: HOTEL_COUNTRY
+        type: varchar
+        sample_values:
+        - India
+        - US
+        - Spain
+        - China
+        - UK
+    -   name: '`HOTEL_NAME`'
+        type: varchar
+        sample_values:
+        - St. Petersburg
+        - Erbil
+        - New York Times Square
+        - Isfahan
+        - Shanghai
+    -   name: LANGUAGE
+        type: varchar
+        sample_values:
+        - en
+        - ja
+        - es
+        - ar
+        - fr
+    -   name: MARKETING_CHANNEL
+        type: varchar
+        sample_values:
+        - Direct
+        - Social
+        - Organic
+        - Meta Search
+        - Display
+    -   name: MONTH
+        type: date
+        sample_values:
+        - Oct 31 2025
+        - Dec 31 2025
+    -   name: PAGE_NAME
+        type: varchar
+        sample_values:
+        - homepage
+        - room-display
+        - hotel-deals
+        - checkout
+        - rewards-page
+    -   name: PLATFORM
+        type: varchar
+        sample_values:
+        - Desktop
+        - Mobile Web
+        - iOS App
+        - Android App
+    -   name: REVENUE
+        type: float
+        sample_values:
+        - '0'
+        - '991.19'
+    -   name: ROOM_DISPLAY_VIEWS
+        type: bigint
+        sample_values:
+        - '0'
+        - '99'
+    -   name: ROOM_NIGHTS
+        type: bigint
+        sample_values:
+        - '0'
+        - '99'
+    -   name: SITE_SECTION
+        type: varchar
+        sample_values:
+        - Hotels
+        - Booking
+        - Home
+        - Deals
+        - Rewards
+    -   name: VISITS
+        type: float
+        sample_values:
+        - '0'
+        - '99'
+    -   name: WEEK
+        type: date
+        sample_values:
+        - Oct  5 2025
+        - Jan  4 2026
+    -   name: WEEK_DAY
+        type: varchar
+        sample_values:
+        - Wednesday
+        - Sunday
+        - Tuesday
+        - Thursday
+        - Friday

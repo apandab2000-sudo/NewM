@@ -1,0 +1,13 @@
+-   Table: DBO.MSC_BOOKING_DATA
+    Columns:
+    -   name: BOOKINGFUNNELSTEPNAME
+        type: varchar
+        sample_values:
+        - 'Step 02: Pricing Page'
+        - 'Step 06: Checkout Page'
+        - 'Step 07: Booking Confirmation Page'
+    -   name: SESSIONUSERID
+        type: decimal
+        sample_values:
+        - '1000586578.1780'
+        - '984991034.1780'

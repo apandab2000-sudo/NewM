@@ -1,0 +1,771 @@
+-   Table: DBO.NLV_ASSORTMENT_COMPOSITION
+    Description: Table captures planned assortments for a customer in a given season.
+        Maps products to assortments and customer segments. It stores lifecycle expectations,
+        product rankings, newness classification, segmentation, key looks, and assortment
+        metadata such as name and type. Each entry links to a specific product and
+        customer, enabling analysis of assortment composition and its alignment with
+        customer profiles and product attributes.
+    Columns:
+    -   name: ASSORTMENT_ID
+        type: varchar
+        description: Unique identifier for the assortment the product belongs to.
+        sample_values:
+        - 0e9a0124-22e3-4a41-b1b4-a3589418eeb2
+        - 636ce311-4b16-4404-9ef4-40b97cf761bb
+        - b695e975-020c-4e6a-b9cd-087a8af4d07a
+    -   name: ASSORTMENT_NAME
+        type: varchar
+        sample_values:
+        - SS26
+        - MEN
+        - WOMEN
+        - SS26 Full Assortment
+        - FW25
+    -   name: ASSORTMENT_TYPE
+        type: varchar
+        sample_values:
+        - PROGRESS
+    -   name: CUSTOMER_ID
+        type: int
+        sample_values:
+        - '10025406'
+        - '10060280'
+    -   name: FIRST_ON_FLOOR
+        type: date
+        sample_values:
+        - Apr  1 2025
+        - Sep  1 2025
+    -   name: KEYLOOKS
+        type: varchar
+        sample_values:
+        - KEY LOOK
+    -   name: LAST_ON_FLOOR
+        type: date
+        sample_values:
+        - Apr  1 2025
+        - Sep  1 2026
+    -   name: NEWNESS
+        type: varchar
+        description: Indicates the newness status of the product, highlighting whether
+            it is a new arrival, a carryover, or a discontinued item.
+        sample_values:
+        - NEW
+        - C/O
+        - D3
+    -   name: PLANNED_LIFECYCLE
+        type: varchar
+        sample_values:
+        - 3-6 months
+        - 13-36 months
+        - 7-12 months
+        - 1-2 months
+        - 36-60 months
+    -   name: PRICE_POSITIONING
+        type: varchar
+        sample_values:
+        - TIER 2
+        - TIER 3
+        - TIERLESS
+        - TIER 1
+        - TIER 4
+    -   name: PRODUCT_CODE
+        type: varchar
+        sample_values:
+        - 04511-5815
+        - 001UY-0000
+        - 56605-0000
+    -   name: PRODUCT_LAST_UPDATED_AT
+        type: date
+        sample_values:
+        - Apr  2 2025
+        - Sep 30 2025
+    -   name: RANKING
+        type: float
+        description: 'Ranking of the product within the assortment, indicating its
+            relative importance or priority. '
+        sample_values:
+        - '1'
+        - '5'
+    -   name: SEASON
+        type: date
+        description: season are semi-annual basis H125 (**2025-06-30**) id for Jan-Jun
+            and H225 for Jul-Dec (**2025-12-31**)
+        sample_values:
+        - Dec 31 2025
+        - Jun 30 2026
+    -   name: SEASONALITY
+        type: varchar
+        sample_values:
+        - SEASONAL
+        - CORE
+        - CORE (PHASE OUT)
+        - NEW CORE
+        - SEASONAL EXTENDED
+    -   name: SEGMENTATION
+        type: varchar
+        sample_values:
+        - CLASSIC,CONTEMPORARY
+        - PREMIUM,CONTEMPORARY
+        - CONTEMPORARY
+        - CLASSIC
+        - YOUTH,CONTEMPORARY
+    -   name: SIZE_AVAILABILITY
+        type: bigint
+        sample_values:
+        - '1'
+        - '9'
+    -   name: STATUS
+        type: varchar
+        sample_values:
+        - ADD
+    -   name: STORY_MAPPED_COUNT
+        type: bigint
+        description: Count of stories mapped to the product within the assortment,
+            indicating the number of narratives or themes associated with the product.
+        sample_values:
+        - '0'
+        - '4'
+    Relationships:
+    -   parent_table: dbo.nlv_assortment_composition
+        parent_column: customer_id
+        referenced_table: dbo.nlv_customers
+        referenced_column: customer_id
+    -   parent_table: dbo.nlv_assortment_composition
+        parent_column: product_code
+        referenced_table: dbo.nlv_products
+        referenced_column: product_code
+-   Table: DBO.NLV_CLUSTER_LINE
+    Description: Product-level attributes and lifecycle details for inventory management.
+        Table is similar but represents customer-specific or cluster-specific variations.
+        It repeats details such as delivery dates, ranking, newness, and sizing but
+        is more targeted toward localized distribution requirements.
+    Columns:
+    -   name: DISTRIBUTION
+        type: varchar
+        description: Distribution channel or category for the product, indicating
+            where the product is sold or its target market segment.
+        sample_values:
+        - MAINLINE
+        - OUTLET
+        - YOUTH EXCLUSIVE
+        - CLASSIC
+        - BLUE TAB
+    -   name: FIRST_DELIVERY_DATE
+        type: date
+        sample_values:
+        - Apr 30 2025
+        - Sep 30 2026
+    -   name: IMAGE
+        type: varchar
+        description: color of product image
+        sample_values:
+        - BLUE
+        - BLACK
+        - WHITE
+        - KHAKI
+        - GREEN
+    -   name: IMAGE_URL
+        type: varchar
+        description: Type of image associated with the product, indicating its perspective
+            or purpose.
+        sample_values:
+        - Main Image
+        - Front Image
+        - Back Image
+        - Side Image
+        - Gallery1 Image
+    -   name: KEYLOOKS
+        type: varchar
+        sample_values:
+        - KEY LOOK
+    -   name: LAST_DELIVERY_DATE
+        type: date
+        sample_values:
+        - Apr 30 2025
+        - Sep 30 2026
+    -   name: MANDATORY
+        type: varchar
+        sample_values:
+        - 'No'
+    -   name: NEWNESS
+        type: varchar
+        description: Indicates the newness status of the product, highlighting whether
+            it is a new arrival, a carryover, or a discontinued item.
+        sample_values:
+        - NEW
+        - C/O
+        - D3
+    -   name: NOTES
+        type: varchar
+    -   name: PRODUCT_CODE
+        type: varchar
+        sample_values:
+        - A6081-0001
+        - A7210-0000
+        - 52599-0046
+    -   name: RANKING
+        type: float
+        description: Ranking of the product within the cluster line, indicating its
+            relative importance or priority.
+        sample_values:
+        - '1'
+        - '5'
+    -   name: REPLEN
+        type: varchar
+        description: Indicates whether the product is eligible for replenishment,
+            which can impact inventory and assortment planning decisions.
+        sample_values:
+        - 'No'
+        - 'Yes'
+    -   name: SEASON
+        type: date
+        sample_values:
+        - Dec 31 2025
+        - Jun 30 2026
+    -   name: SEASONALITY
+        type: varchar
+        sample_values:
+        - SEASONAL
+        - CORE
+        - SEASONAL FASHION
+        - TBD
+        - CORE (PHASE OUT)
+    -   name: SEGMENTATION
+        type: varchar
+        sample_values:
+        - CLASSIC, CONTEMPORARY
+        - CLASSIC
+        - PREMIUM, CONTEMPORARY
+        - CONTEMPORARY
+        - YOUTH
+    -   name: SIZING
+        type: varchar
+        description: array of sizing available for the product
+        sample_values:
+        - '["XS", "S", "M", "L"]'
+        - '["S", "M", "L", "XL", "XXL"]'
+        - '["XS", "S", "M", "L", "XL", "XXL"]'
+        - '["S", "M", "L", "XL"]'
+    -   name: STATUS
+        type: varchar
+        sample_values:
+        - ADD
+    -   name: STORIES
+        type: varchar
+        sample_values:
+        - System Ready
+        - D1
+        - NEW WSL
+        - 'System not ready '
+        - Replen
+    -   name: SUSTAINABILITY_STORY
+        type: varchar
+        sample_values:
+        - RECYCLE & REUSE FACILITY
+        - RECYCLED COTTON
+        - MMC LYOCELL
+        - WATERLESS DYE METHOD
+        - MMC LYOCELL, RECYCLE & REUSE FACILITY
+    -   name: VLP_ORDER
+        type: float
+        sample_values:
+        - '1'
+        - '973'
+    Relationships:
+    -   parent_table: dbo.nlv_cluster_line
+        parent_column: product_code
+        referenced_table: dbo.nlv_products
+        referenced_column: product_code
+-   Table: DBO.NLV_CUSTOMERS
+    Description: Table maintains customer profiles, including their region and account
+        manager. This table connects directly to orders and assortments.
+    Columns:
+    -   name: CUSTOMER_ID
+        type: int
+        description: unique customer identifier
+        is_primary_key: 1
+        sample_values:
+        - '10025406'
+        - '10060280'
+    -   name: CUSTOMER_ID_BKP
+        type: varchar
+        sample_values:
+        - 059ab7a9-b344-48a0-b36c-354d0a7b6e51
+        - 05f6481e-6ec9-4c7c-baec-8e91510a9dfa
+        - ff2d2e93-9eea-462a-9274-db300df1e096
+    -   name: CUSTOMER_NAME
+        type: varchar
+        sample_values:
+        - Adler Modemarkt GmbH
+        - B & I Fashion AG
+        - Baltz
+        - Big Deal Holstein GmbH BIG DEAL JEANS
+        - Brooklyn NV
+    -   name: CUSTOMER_REGION
+        type: varchar
+        sample_values:
+        - LSE
+        - NEU
+    -   name: KEY_ACCOUNT_MANAGER
+        type: varchar
+        description: Account managers who will help customers build their assortments
+        sample_values:
+        - Heiko Mueller-Janus
+        - Jens Frommhold
+        - Gert Van Heck
+-   Table: DBO.NLV_FINAL_ASSORTMENTS
+    Description: Table represents the finalized assortments delivered to the customer.
+        It includes counts of pending or removed items, price-position tiers, publication
+        status, archive status, and customer linkage.
+    Columns:
+    -   name: ADD_PENDING_ITEM_COUNT
+        type: bigint
+        description: Count of items that are pending addition to the assortment, indicating
+            the number of products that are in the process of being added but have
+            not yet been finalized in the assortment.
+        sample_values:
+        - '0'
+        - '91'
+    -   name: ASSORTMENT_DATE_CREATED
+        type: date
+        sample_values:
+        - Apr 24 2025
+        - Sep 25 2025
+    -   name: ASSORTMENT_DISPLAY_NAME
+        type: varchar
+        sample_values:
+        - FA-WOMEN NOS
+        - FA-MEN NOS
+        - FA-WOMEN SEASONAL
+        - FA-Saisonal-Damen
+        - FA-Saisonal-Herren
+    -   name: ASSORTMENT_ID
+        type: varchar
+        sample_values:
+        - 013e4538-f14d-4cd9-b8ae-9b5a6bc79f0b
+        - 016c94e1-b7c4-40f8-ab97-5e3f8df94e50
+        - 0356c289-94a6-424e-96b5-5e0e2fd548cb
+    -   name: ASSORTMENT_NAME
+        type: varchar
+        sample_values:
+        - FA-MEN NOS
+        - FA-WOMEN NOS
+        - FA-WOMEN SEASONAL
+        - FA-Saisonal-Damen
+        - FA-Saisonal-Herren
+    -   name: ASSORTMENT_TYPE
+        type: varchar
+        sample_values:
+        - FINAL
+    -   name: CUSTOMER_ID
+        type: int
+        sample_values:
+        - '10025406'
+        - '10060100'
+    -   name: DROP_ITEM_COUNT
+        type: bigint
+        sample_values:
+        - '0'
+        - '6'
+    -   name: IS_ARCHIVED
+        type: varchar
+        sample_values:
+        - 'NO'
+        - 'YES'
+    -   name: IS_PUBLISHED
+        type: varchar
+        sample_values:
+        - 'YES'
+    -   name: PARENT_LINE_DISPLAY_NAME
+        type: varchar
+        sample_values:
+        - Europe (LSE) (H126)
+        - Europe (LSE) (H225)
+    -   name: PARENT_LINE_ID
+        type: varchar
+        sample_values:
+        - eee4c0c3-ca94-4559-8592-65ed1ffb1eb4
+        - 223d0b75-0b5e-4d41-95a2-33482e8b99e7
+    -   name: PRICE_POS_TIER_1
+        type: bigint
+        sample_values:
+        - '0'
+        - '0'
+    -   name: PRICE_POS_TIER_4
+        type: bigint
+        sample_values:
+        - '0'
+        - '0'
+    -   name: REMOVE_ITEM_COUNT
+        type: bigint
+        sample_values:
+        - '0'
+        - '9'
+    -   name: SEASON
+        type: date
+        description: season are semi-annual basis H125 (**2025-06-30**) id for Jan-Jun
+            and H225 for Jul-Dec (**2025-12-31**)
+        sample_values:
+        - Dec 31 2025
+        - Jun 30 2026
+    Relationships:
+    -   parent_table: dbo.nlv_final_assortments
+        parent_column: customer_id
+        referenced_table: dbo.nlv_customers
+        referenced_column: customer_id
+-   Table: DBO.NLV_ORDERS
+    Description: Table captures order-level details, including pricing, quantity,
+        customer, and product information. It links to customers and products, enabling
+        analysis of sales performance and order composition.
+    Columns:
+    -   name: BASEPRICE_SKU
+        type: float
+        description: Base price per SKU, representing the original or standard price
+            of a single unit of the product before any discounts or adjustments are
+            applied.
+        sample_values:
+        - '10'
+        - '99.95'
+    -   name: COUNTRY
+        type: varchar
+        description: currently only 3 country data is available
+        sample_values:
+        - Germany
+        - Switzerland
+        - Belgium
+    -   name: CURRENCY
+        type: varchar
+        sample_values:
+        - EUR
+        - CHF
+    -   name: CUSTOMER_ID
+        type: int
+        sample_values:
+        - '10025406'
+        - '10052102'
+    -   name: ORDER_NUMBER
+        type: bigint
+        sample_values:
+        - '1900540249'
+        - '1900641431'
+    -   name: ORDER_TYPE
+        type: varchar
+        sample_values:
+        - B2B
+    -   name: PRODUCT_CODE
+        type: varchar
+        sample_values:
+        - 04511-1786
+        - 00501-0114
+        - 04511-1507
+    -   name: QUANTITY_SKU
+        type: bigint
+        description: Quantity of the SKU in the order, representing the number of
+            units of the SKU included in the order.
+        sample_values:
+        - '1'
+        - '9'
+    -   name: REGION
+        type: varchar
+        sample_values:
+        - Bavaria
+        - Nidwalden
+        - Zug
+        - Lucerne
+        - Baden-Wurttemberg
+    -   name: SALES_REP_ID
+        type: int
+        sample_values:
+        - '71062'
+        - '72955'
+    -   name: SALES_REP_NAME
+        type: varchar
+        sample_values:
+        - MUELLER, HEIKO
+        - FROMMHOLD, JENS
+        - Schulze, Lena
+        - STOECKER, HARTMUT
+        - AHLENIUS, ADAM
+    -   name: SEASON
+        type: date
+        sample_values:
+        - Dec 31 2025
+        - Jun 30 2026
+    -   name: SITE
+        type: varchar
+        sample_values:
+        - Prebook
+        - At Once
+    -   name: SIZE
+        type: varchar
+        sample_values:
+        - M-
+        - L-
+        - S-
+        - '3032'
+        - '3132'
+    -   name: SKU
+        type: varchar
+        description: Stock Keeping Unit (SKU) associated with the order, representing
+            a unique identifier for each distinct product or item in the order.
+        sample_values:
+        - 5660500000L-
+        - 04511178603432
+        - '00501011403232'
+    -   name: TOTALPRICE_SKU
+        type: float
+        description: Total price for the SKU in the order. Calculated as baseprice_sku
+            * quantity_sku.
+        sample_values:
+        - '10'
+        - '98'
+    Relationships:
+    -   parent_table: dbo.nlv_orders
+        parent_column: customer_id
+        referenced_table: dbo.nlv_customers
+        referenced_column: customer_id
+    -   parent_table: dbo.nlv_orders
+        parent_column: product_code
+        referenced_table: dbo.nlv_products
+        referenced_column: product_code
+-   Table: DBO.NLV_PARENT_LINE
+    Description: Lifecycle tracking for product lines. Table describes high-level
+        product line details for a season. It includes delivery dates, product ranking,
+        segmentation, sustainability information, and whether the item is new or replenished.
+        It also stores optional promotional details like key looks and stories. Each
+        entry links back to a product.
+    Columns:
+    -   name: DISTRIBUTION
+        type: varchar
+        description: Distribution channel associated with the product, representing
+            the specific channel or platform through which the product is distributed
+            or sold.
+        sample_values:
+        - MAINLINE
+        - OUTLET
+        - YOUTH EXCLUSIVE
+        - CLASSIC
+        - BLUE TAB
+    -   name: FIRST_DELIVERY_DATE
+        type: date
+        description: Date when the product is first delivered to stores. This represents
+            the initial availability of the product in the store/stock.
+        sample_values:
+        - Apr 30 2025
+        - Sep 30 2026
+    -   name: IMAGE
+        type: varchar
+        description: Primary color of the product, representing the main color used
+            in the product's design or appearance.
+        sample_values:
+        - BLUE
+        - BLACK
+        - WHITE
+        - KHAKI
+        - RED
+    -   name: IMAGE_URL
+        type: varchar
+        description: URL of the product image, representing the location or link to
+            the image file associated with the product.
+        sample_values:
+        - Main Image
+        - Front Image
+        - Gallery1 Image
+        - Back Image
+        - Side Image
+    -   name: KEYLOOKS
+        type: varchar
+        sample_values:
+        - T2 KEY LOOK
+        - T3 KEY LOOK
+        - KEY LOOK
+    -   name: LAST_DELIVERY_DATE
+        type: date
+        description: Last delivery date for the product, representing the most recent
+            date on which the product is scheduled to be delivered or restocked.
+        sample_values:
+        - Apr 30 2025
+        - Sep 30 2026
+    -   name: MANDATORY
+        type: varchar
+        sample_values:
+        - 'No'
+    -   name: NEWNESS
+        type: varchar
+        description: Indicating whether the product is new, a carryover, or available
+            for early sales only.
+        sample_values:
+        - NEW
+        - C/O
+        - EARLY SALES ONLY
+        - PULL FORWARD
+        - MAY D0
+    -   name: PRODUCT_CODE
+        type: varchar
+        sample_values:
+        - A8461-0005
+        - A9330-0009
+        - D5328-0001
+    -   name: RANKING
+        type: float
+        sample_values:
+        - '1'
+        - '5'
+    -   name: REPLEN
+        type: varchar
+        description: Replenishment status of the product, indicating whether the product
+            needs to be replenished or not.
+        sample_values:
+        - 'No'
+        - 'Yes'
+    -   name: SEASON
+        type: date
+        sample_values:
+        - Dec 31 2025
+        - Jun 30 2026
+    -   name: SEASONALITY
+        type: varchar
+        description: Seasonality classification of the product, indicating the seasonal
+            nature or categories of the product based on its relevance to specific
+            seasons or fashion trends.
+        sample_values:
+        - SEASONAL FASHION
+        - SEASONAL
+        - CORE
+        - TBD
+        - ESSENTIALS
+    -   name: SEGMENTATION
+        type: varchar
+        description: Segmentation classification of the product, indicating the market
+            segment or target audience for the product based on its style, quality,
+            and price point.
+        sample_values:
+        - CLASSIC, CONTEMPORARY
+        - CLASSIC
+        - PREMIUM, CONTEMPORARY
+        - CONTEMPORARY
+        - YOUTH
+    -   name: SIZING
+        type: varchar
+        description: array of sizes available for particular products
+        sample_values:
+        - '["24:32", "25:32", "26:28", "26:29", "26:30", "26:32", "27:28", "27:29",
+            "27:30", "27:32", "28:28",  "46:32", "46:33", "46:34", "46:36", "46:38",
+            "5XL", "XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"]'
+        - '["24:32", "25:32", "26:28", "26:29", "26:30", "26:32", "27:28", "27:29",
+            "27:30", "27:32", "28:28", , "44:34", "44:36", "44:38", "46:28", "46:30",
+            "46:31", "46:32", "46:33", "46:34", "46:36", "46:38"]'
+        - '["S", "M", "L", "XL"]'
+    -   name: STATUS
+        type: varchar
+        sample_values:
+        - ADD
+    -   name: STORIES
+        type: varchar
+        sample_values:
+        - system ready
+        - system ready, Loose Prep
+        - Loose Prep, system ready
+        - BARCELONA
+        - EU4EU
+    -   name: SUSTAINABILITY_STORY
+        type: varchar
+        description: specific sustainability features associated with the product.
+        sample_values:
+        - RECYCLE & REUSE FACILITY
+        - RECYCLED COTTON
+        - MMC LYOCELL, RECYCLE & REUSE FACILITY
+        - WATERLESS DYE METHOD
+        - MMC VISCOSE
+    -   name: VLP_ORDER
+        type: float
+        sample_values:
+        - '1'
+        - '97'
+    Relationships:
+    -   parent_table: dbo.nlv_parent_line
+        parent_column: product_code
+        referenced_table: dbo.nlv_products
+        referenced_column: product_code
+-   Table: DBO.NLV_PRODUCTS
+    Description: Table contains detailed information about products, including category,
+        color, fabric innovation, finish, fit, gender, and other attributes. Each
+        product is uniquely identified by a product code.
+    Columns:
+    -   name: CATEGORY
+        type: varchar
+        sample_values:
+        - TOPS
+        - BOTTOMS
+        - ACCESSORIES
+        - FOOTWEAR
+    -   name: COLOR
+        type: varchar
+        sample_values:
+        - BLUE
+        - BLACK
+        - WHITE
+        - KHAKI
+        - RED
+    -   name: FABRIC_INNOVATION
+        type: varchar
+        sample_values:
+        - COOL
+        - LEVI'S FLEX
+        - WARM
+        - ALL SEASON TECH
+        - STRONG
+    -   name: FINISH
+        type: varchar
+        sample_values:
+        - 0000I-0001JUNIPER-WB
+        - 0004F-0024SP BRANDED HOODIE TOADSTOOL
+        - 000C0-0001NOVAL ROUND NECK LS SWEATER BLUE MELANGE
+        - 000IL-0003REGULAR BLACK
+        - 000UR-0009SHAANK
+    -   name: FIT
+        type: varchar
+        sample_values:
+        - STANDARD/REGULAR
+        - SLIM
+        - LOOSE
+        - '501'
+        - SKINNY
+    -   name: GENDER
+        type: varchar
+        sample_values:
+        - Male
+        - Female
+    -   name: MFP_CATEGORY
+        type: varchar
+        sample_values:
+        - MEN - TOPS
+        - MEN - BOTTOMS
+        - WOMEN - TOPS
+        - WOMEN - BOTTOMS
+        - MEN - ACCESSORIES
+    -   name: PRODUCT_CODE
+        type: varchar
+        is_primary_key: 1
+        sample_values:
+        - 0000I-0001
+        - 0004B-0010
+        - 000GD-0005
+        - 000LP-0000
+        - 000VS-0006
+    -   name: SUB_CATEGORY
+        type: varchar
+        sample_values:
+        - GRAPHIC TEES
+        - WOVEN SHIRTS
+        - NON GRAPHIC TEES
+        - REGULAR OR STRAIGHT
+        - TAPER
+    -   name: TITLE
+        type: varchar
+        sample_values:
+        - SS RELAXED FIT TEE
+        - THE PERFECT TEE
+        - "505\u2122 REGULAR FIT"
+        - "511\u2122 SLIM"
+        - GRAPHIC CREWNECK TEE

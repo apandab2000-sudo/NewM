@@ -1,0 +1,10 @@
+# NewM
+
+# Ignore sensitive or generated data
+business_data/
+logs/
+*.log
+nohup.out
+.env*
+__pycache__/
+*.pyc

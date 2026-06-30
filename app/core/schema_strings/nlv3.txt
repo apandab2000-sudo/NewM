@@ -1,0 +1,90 @@
+Table nlv_assortment_composition(season DATE,
+price_positioning VARCHAR(20),
+seasonality VARCHAR(50),
+planned_lifecycle VARCHAR(20),
+first_on_floor DATE,
+last_on_floor DATE,
+newness VARCHAR(30),
+status VARCHAR(10),
+assortment_name VARCHAR(50),
+segmentation VARCHAR(50),
+product_last_updated_at DATE,
+keylooks VARCHAR(20),
+assortment_type VARCHAR(20))
+
+Foreign Key: nlv_assortment_composition(customer_id) references nlv_customers(customer_id), nlv_assortment_composition(product_code) references nlv_products(product_code)
+
+Table nlv_cluster_line(image VARCHAR(10),
+image_url VARCHAR(30),
+status VARCHAR(10),
+distribution VARCHAR(100),
+replen VARCHAR(10),
+sustainability_story VARCHAR(100),
+mandatory VARCHAR(10),
+first_delivery_date DATE,
+last_delivery_date DATE,
+seasonality VARCHAR(50),
+newness VARCHAR(30),
+stories VARCHAR(500),
+sizing VARCHAR,
+season DATE,
+segmentation VARCHAR(50),
+keylooks VARCHAR(20))
+
+Foreign Key: nlv_cluster_line(product_code) references nlv_products(product_code)
+
+Table nlv_customers(key_account_manager VARCHAR(50),
+customer_name VARCHAR(200),
+customer_region VARCHAR(10))
+
+Table nlv_final_assortments(season DATE,
+assortment_name VARCHAR(50),
+assortment_display_name VARCHAR(50),
+assortment_type VARCHAR(20),
+assortment_date_created DATE,
+is_published VARCHAR(10),
+is_archived VARCHAR(10),
+parent_line_display_name VARCHAR(50))
+
+Foreign Key: nlv_final_assortments(customer_id) references nlv_customers(customer_id)
+
+Table nlv_orders(country VARCHAR(20),
+site VARCHAR(20),
+season DATE,
+order_type VARCHAR(10),
+currency VARCHAR(10),
+region VARCHAR(50),
+sales_rep_name VARCHAR(50),
+size VARCHAR(10))
+
+Foreign Key: nlv_orders(customer_id) references nlv_customers(customer_id), nlv_orders(product_code) references nlv_products(product_code)
+
+Table nlv_parent_line(seasonality VARCHAR(50),
+image VARCHAR(10),
+sizing VARCHAR,
+status VARCHAR(10),
+keylooks VARCHAR(20),
+first_delivery_date DATE,
+last_delivery_date DATE,
+season DATE,
+newness VARCHAR(30),
+vlp_order FLOAT,
+segmentation VARCHAR(50),
+stories VARCHAR(500),
+mandatory VARCHAR(10),
+image_url VARCHAR(30),
+sustainability_story VARCHAR(100),
+replen VARCHAR(10),
+distribution VARCHAR(100))
+
+Foreign Key: nlv_parent_line(product_code) references nlv_products(product_code)
+
+Table nlv_products(title VARCHAR(200),
+finish VARCHAR(200),
+color VARCHAR(50),
+gender VARCHAR(10),
+category VARCHAR(20),
+sub_category VARCHAR(50),
+mfp_category VARCHAR(50),
+fit VARCHAR(50),
+fabric_innovation VARCHAR(50))

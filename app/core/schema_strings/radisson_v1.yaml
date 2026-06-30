@@ -1,0 +1,110 @@
+-   Table: DBO.RADISSON_FUNNEL
+    Columns:
+    -   name: ADR
+        type: float
+        sample_values:
+        - '0'
+        - '99.41'
+    -   name: AOV
+        type: float
+        sample_values:
+        - '0'
+        - '947.68'
+    -   name: BOOKINGREVENUE
+        type: float
+        sample_values:
+        - '0'
+        - '962.63'
+    -   name: BOOKINGROOMNIGHTS
+        type: bigint
+        sample_values:
+        - '0'
+        - '99'
+    -   name: CONVERSIONRATE
+        type: float
+        sample_values:
+        - '0'
+        - '1.084'
+    -   name: HOTELCITY
+        type: varchar
+        sample_values:
+        - Jumeirah
+        - Palm Jumeirah
+        - Dubai City
+        - Downtown Dubai
+        - Edinburgh
+    -   name: HOTELCOUNTRY
+        type: varchar
+        sample_values:
+        - India
+        - US
+        - Dubai
+        - UK
+        - China
+    -   name: HOTELNAME
+        type: varchar
+        sample_values:
+        - Hotel Name 80
+        - Hotel Name 178
+        - Hotel Name 21
+    -   name: LENGTHOFSTAY
+        type: float
+        sample_values:
+        - '0'
+        - '9'
+    -   name: MARKETINGCHANNEL
+        type: varchar
+        sample_values:
+        - Organic
+        - Direct
+        - Paid Search
+        - Meta Search
+        - Display
+    -   name: MEMBERTYPE
+        type: varchar
+        sample_values:
+        - Non-Member
+        - Member
+    -   name: MONTH
+        type: datetime
+        sample_values:
+        - Apr  1 2026 12:00AM
+        - May  1 2026 12:00AM
+    -   name: PAGELANGUAGE
+        type: varchar
+        sample_values:
+        - en
+        - de
+        - fr
+        - es
+        - it
+    -   name: PAGENAME
+        type: varchar
+        sample_values:
+        - Property Page
+        - Home Page
+        - Room Display Page
+        - Search Page
+        - Checkout Page
+    -   name: PLATFORM
+        type: varchar
+        sample_values:
+        - Desktop
+        - Mobile Web
+        - iOS App
+        - Android App
+    -   name: RESERVATIONS
+        type: bigint
+        sample_values:
+        - '0'
+        - '99'
+    -   name: SEGMENT
+        type: varchar
+        sample_values:
+        - Home Page | en | Organic | Desktop | Non-Member | Dubai | Jumeirah
+        - Property Page | en | Direct | Desktop | Member | Netherlands | Rotterdam
+    -   name: VISITS
+        type: bigint
+        sample_values:
+        - '10'
+        - '99'

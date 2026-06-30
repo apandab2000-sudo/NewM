@@ -1,0 +1,14 @@
+base:
+  query_validation:
+    temperature: 0.0
+    max_tokens: 500
+  query_resolution:
+    temperature: 0.0
+    max_tokens: 200
+  nlu_extraction:
+    temperature: 0.0
+    max_tokens: 500
+  schema_retrieval: true
+  query_resolution: true
+
+
