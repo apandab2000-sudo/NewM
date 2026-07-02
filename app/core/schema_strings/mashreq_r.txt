@@ -1,8 +1,0 @@
-Table Diversity_Latest(Fiscal_Year INTEGER,
-Fiscal_Month DATE,
-Gender NVARCHAR(10),
-Management_Type NVARCHAR(50),
-Type NVARCHAR(10),
-Country NVARCHAR(50),
-Business_Unit NVARCHAR(10),
-Emp_count INTEGER)
